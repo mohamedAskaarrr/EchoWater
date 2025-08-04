@@ -8,21 +8,29 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Authentication routes
-Route::get('/login', function () {
-    return view('auth.premium-login');
-})->name('login')->middleware('guest');
+Route::middleware('guest')->group(function () {
+    // Login routes
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    
+    // Registration routes
+    Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
+    Route::post('/signup', [AuthController::class, 'signup'])->name('signup.post');
+});
 
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
-Route::get('/signup', function () {
-    return view('auth.premium-signup');
-})->name('signup')->middleware('guest');
-
-Route::post('/signup', [AuthController::class, 'signup'])->name('signup.post');
-
+// Logout route (requires authentication)
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Static pages
+// Protected routes (require authentication)
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', function () {
+        return view('profile.index');
+    })->name('profile');
+    
+    // Add more protected routes here as needed
+});
+
+// Public routes
 Route::get('/shop', function () {
     return view('shop.premium');
 })->name('shop');

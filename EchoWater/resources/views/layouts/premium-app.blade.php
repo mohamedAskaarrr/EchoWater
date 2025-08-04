@@ -336,7 +336,7 @@
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl eco-gradient p-0.5 shadow-lg">
-                        <img src="{{ asset('EchoWaterLogo.jpg') }}" alt="EchoWater" class="w-full h-full rounded-lg object-cover">
+                        <img src="{{ asset('images/EchoWaterLogo.jpg') }}" alt="EchoWater" class="w-full h-full rounded-lg object-cover">
                     </div>
                     <span class="font-display text-xl font-bold gradient-text">EchoWater</span>
                 </div>
@@ -350,7 +350,12 @@
                     
                     @auth
                         <div class="flex items-center space-x-4">
-                            <span class="text-gray-600">Welcome, {{ Auth::user()->name }}</span>
+                            <a href="{{ route('profile') }}" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 group">
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fas fa-user text-white text-sm"></i>
+                                </div>
+                                <span class="font-medium">{{ Auth::user()->name ?? 'Mohamed Ibrahim' }}</span>
+                            </a>
                             <a href="#" class="btn-premium eco-gradient text-white px-6 py-2 rounded-full font-medium text-sm">
                                 Dashboard
                             </a>
@@ -390,13 +395,26 @@
                 
                 @auth
                     <div class="pt-4 border-t border-gray-200">
-                        <p class="text-gray-600 mb-2">Welcome, {{ Auth::user()->name }}</p>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">{{ Auth::user()->name ?? 'Mohamed Ibrahim' }}</p>
+                                <p class="text-sm text-gray-600">Premium Member</p>
+                            </div>
+                        </div>
+                        <a href="{{ route('profile') }}" class="block text-gray-700 hover:text-blue-600 font-medium py-2 mb-2">
+                            <i class="fas fa-user mr-2"></i>
+                            My Profile
+                        </a>
                         <a href="#" class="block btn-premium eco-gradient text-white px-6 py-2 rounded-full font-medium text-sm text-center mb-2">
                             Dashboard
                         </a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="block w-full text-left text-red-600 font-medium py-2">
+                                <i class="fas fa-sign-out-alt mr-2"></i>
                                 Logout
                             </button>
                         </form>
@@ -426,7 +444,7 @@
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3">
                         <div class="w-10 h-10 rounded-xl eco-gradient p-0.5">
-                            <img src="{{ asset('EchoWaterLogo.jpg') }}" alt="EchoWater" class="w-full h-full rounded-lg object-cover">
+                            <img src="{{ asset('images/EchoWaterLogo.jpg') }}" alt="EchoWater" class="w-full h-full rounded-lg object-cover">
                         </div>
                         <span class="font-display text-xl font-bold">EchoWater</span>
                     </div>

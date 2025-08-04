@@ -26,7 +26,7 @@
             <div class="relative mx-auto w-32 h-32 mb-6">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-glow opacity-75"></div>
                 <div class="relative w-full h-full bg-white rounded-full p-2 shadow-2xl">
-                    <img src="{{ asset('EchoWaterLogo.jpg') }}" alt="EchoWater Logo" class="w-full h-full rounded-full object-cover">
+                    <img src="{{ asset('images/EchoWaterLogo.jpg') }}" alt="EchoWater Logo" class="w-full h-full rounded-full object-cover">
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
         <!-- Hero Title with Stunning Typography -->
         <div class="space-y-6 mb-12">
             <h1 class="animate-slide-up font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                <span class="block text-gray-900 mb-4">Pure Water,</span>
+                <span class="block text-gray-900 mb-4">Clean Water,</span>
                 <span class="block gradient-text bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent">
                     Pure Life
                 </span>
@@ -161,93 +161,183 @@
         <!-- Section Header -->
         <div class="text-center mb-20 animate-slide-up">
             <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Flagship <span class="gradient-text">Product</span>
+                Our Premium <span class="gradient-text">Products</span>
             </h2>
             <p class="font-body text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Meet the EchoWater Machine – the pinnacle of water purification technology
+                Discover our complete range of water purification solutions designed for your perfect hydration experience
             </p>
         </div>
 
-        <!-- Product Display -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <!-- Product Image -->
-            <div class="order-2 lg:order-1 animate-slide-up">
-                <div class="relative group">
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            
+            <!-- EchoWater Machine -->
+            <div class="group animate-slide-up">
+                <div class="relative">
                     <div class="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div>
                     <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="{{ asset('EchoWaterMachine.jpg') }}" alt="EchoWater Machine" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
-                        <!-- Floating Info Cards -->
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span class="text-sm font-semibold text-gray-700">Active</span>
+                        <div class="relative h-80">
+                            <img src="{{ asset('images/EchoWaterMachine.jpg') }}" alt="EchoWater Machine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <!-- Product Badge -->
+                            <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                <i class="fas fa-star mr-1"></i>
+                                Premium
+                            </div>
+                            
+                            <!-- Status Indicator -->
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                    <span class="text-sm font-semibold text-gray-700">Smart Tech</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Purity Indicator -->
+                            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-tint text-blue-500"></i>
+                                    <span class="text-sm font-semibold text-gray-700">99.9% Pure</span>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-tint text-blue-500"></i>
-                                <span class="text-sm font-semibold text-gray-700">99.9% Pure</span>
+                        <!-- Product Info -->
+                        <div class="p-8">
+                            <h3 class="font-display text-2xl font-bold text-gray-900 mb-3">
+                                EchoWater <span class="gradient-text">Pro Machine</span>
+                            </h3>
+                            <p class="font-body text-gray-600 mb-6 leading-relaxed">
+                                Advanced 7-stage purification system with IoT monitoring, UV sterilization, and eco-mode operation for ultimate water purity.
+                            </p>
+                            
+                            <!-- Features -->
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">7-Stage Filtration</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-wifi text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Smart IoT Control</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-leaf text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Eco-Friendly</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Price & CTA -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-3xl font-bold gradient-text">$899</span>
+                                    <span class="text-gray-500 line-through ml-2">$1,299</span>
+                                </div>
+                                <a href="{{ route('shop') }}" class="btn-premium eco-gradient text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                                    View Details
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Product Details -->
-            <div class="order-1 lg:order-2 space-y-8 animate-slide-up" style="animation-delay: 0.2s;">
-                <div>
-                    <h3 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        EchoWater <span class="gradient-text">Machine</span>
-                    </h3>
-                    <p class="font-body text-xl text-gray-600 leading-relaxed">
-                        Revolutionary 7-stage purification system that transforms ordinary water into pristine, mineral-enriched hydration. 
-                        Experience water the way nature intended.
-                    </p>
-                </div>
-                
-                <!-- Premium Features List -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-4 group">
-                        <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-check text-white text-sm"></i>
+            <!-- EchoWater Bottles -->
+            <div class="group animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div>
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl">
+                        <div class="relative h-80">
+                            <img src="{{ asset('images/EchoWater.jpg') }}" alt="EchoWater Bottles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <!-- Product Badge -->
+                            <div class="absolute top-4 left-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                <i class="fas fa-leaf mr-1"></i>
+                                Eco-Pure
+                            </div>
+                            
+                            <!-- Certification -->
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-certificate text-yellow-500"></i>
+                                    <span class="text-sm font-semibold text-gray-700">Certified</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Natural Source -->
+                            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-mountain text-green-500"></i>
+                                    <span class="text-sm font-semibold text-gray-700">Natural Spring</span>
+                                </div>
+                            </div>
                         </div>
-                        <span class="font-body text-gray-700 text-lg">Advanced 7-stage filtration with UV sterilization</span>
-                    </div>
-                    <div class="flex items-center space-x-4 group">
-                        <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-check text-white text-sm"></i>
+                        
+                        <!-- Product Info -->
+                        <div class="p-8">
+                            <h3 class="font-display text-2xl font-bold text-gray-900 mb-3">
+                                EchoWater <span class="gradient-text">Pure Collection</span>
+                            </h3>
+                            <p class="font-body text-gray-600 mb-6 leading-relaxed">
+                                Premium bottled water sourced from pristine mountain springs, naturally filtered and enriched with essential minerals.
+                            </p>
+                            
+                            <!-- Features -->
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Natural Spring Water</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-recycle text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">100% Recyclable</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-5 h-5 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-award text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-700 text-sm">Award Winning</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Price & CTA -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-3xl font-bold gradient-text">$24</span>
+                                    <span class="text-gray-500 text-sm">/12-pack</span>
+                                </div>
+                                <a href="{{ route('shop') }}" class="btn-premium eco-gradient text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                                    Shop Now
+                                </a>
+                            </div>
                         </div>
-                        <span class="font-body text-gray-700 text-lg">Smart IoT monitoring with mobile app control</span>
                     </div>
-                    <div class="flex items-center space-x-4 group">
-                        <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-check text-white text-sm"></i>
-                        </div>
-                        <span class="font-body text-gray-700 text-lg">Energy-efficient design with eco-mode operation</span>
-                    </div>
-                    <div class="flex items-center space-x-4 group">
-                        <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-check text-white text-sm"></i>
-                        </div>
-                        <span class="font-body text-gray-700 text-lg">3-year warranty with 24/7 customer support</span>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('shop') }}" class="group btn-premium eco-gradient text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-500">
-                        <i class="fas fa-eye mr-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        View Details
-                    </a>
-                    <button class="group bg-white text-blue-600 border-2 border-blue-200 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-500">
-                        <i class="fas fa-play mr-3 group-hover:scale-110 transition-transform duration-300"></i>
-                        Watch Demo
-                    </button>
                 </div>
             </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center animate-slide-up" style="animation-delay: 0.4s;">
+            <p class="font-body text-lg text-gray-600 mb-8">
+                Explore our complete product range and find the perfect water solution for your lifestyle
+            </p>
+            <a href="{{ route('shop') }}" class="group inline-flex items-center btn-premium eco-gradient text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                <i class="fas fa-store mr-3 group-hover:animate-bounce"></i>
+                Visit Our Store
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
         </div>
     </div>
 </section>

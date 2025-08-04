@@ -124,7 +124,7 @@
                             <i class="fas fa-heart"></i>
                         </button>
                     </div>
-                    <img src="{{ asset('EchoWaterMachine.jpg') }}" alt="EchoWater Pro" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="{{ asset('images/EchoWaterMachine.jpg') }}" alt="EchoWater Pro" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
@@ -152,8 +152,8 @@
                     
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-gray-900">$899</span>
-                            <span class="text-lg text-gray-400 line-through">$1,199</span>
+                            <span class="text-2xl font-bold text-gray-900">35,000 EGP</span>
+                            <span class="text-lg text-gray-400 line-through">46,000 EGP</span>
                         </div>
                         <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-sm font-semibold">25% OFF</span>
                     </div>
@@ -210,7 +210,7 @@
                     
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-gray-900">$149</span>
+                            <span class="text-2xl font-bold text-gray-900">5,500 EGP</span>
                         </div>
                         <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg text-sm font-semibold">Best Seller</span>
                     </div>
@@ -272,7 +272,7 @@
                     
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-gray-900">$79</span>
+                            <span class="text-2xl font-bold text-gray-900">2,900 EGP</span>
                         </div>
                         <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg text-sm font-semibold">Limited</span>
                     </div>
@@ -329,8 +329,8 @@
                     
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-gray-900">$499</span>
-                            <span class="text-lg text-gray-400 line-through">$599</span>
+                            <span class="text-2xl font-bold text-gray-900">18,500 EGP</span>
+                            <span class="text-lg text-gray-400 line-through">22,000 EGP</span>
                         </div>
                         <span class="bg-red-100 text-red-800 px-2 py-1 rounded-lg text-sm font-semibold">Hot Deal</span>
                     </div>
@@ -344,6 +344,133 @@
                             <i class="fas fa-eye mr-2"></i>
                             Quick View
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prime Product Card - EchoWater Machine -->
+            <div class="product-card machines group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-gradient-to-r from-yellow-400 to-orange-500 relative">
+                <!-- Prime Badge -->
+                <div class="absolute -top-2 -right-2 z-20">
+                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-12">
+                        <i class="fas fa-crown mr-1"></i>
+                        PRIME
+                    </div>
+                </div>
+                
+                <div class="relative overflow-hidden">
+                    <div class="absolute top-4 left-4 z-10">
+                        <span class="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+                            <i class="fas fa-bolt mr-1"></i>
+                            Premium Choice
+                        </span>
+                    </div>
+                    <div class="absolute top-4 right-4 z-10">
+                        <button class="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors duration-200 group-hover:bg-white">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Enhanced Machine Image -->
+                    <div class="relative">
+                        <img src="{{ asset('images/EchoWaterMachine.jpg') }}" alt="EchoWater Prime Machine" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <!-- Premium Features Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="bg-white/90 backdrop-blur-sm rounded-xl p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-wifi text-blue-500"></i>
+                                        <span class="font-semibold">Smart IoT</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-shield-alt text-green-500"></i>
+                                        <span class="font-semibold">7-Stage Filter</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-gradient-to-b from-white to-gray-50">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm text-orange-600 font-semibold bg-orange-50 px-3 py-1 rounded-lg border border-orange-200">
+                            <i class="fas fa-star mr-1"></i>
+                            Prime Machine
+                        </span>
+                        <div class="flex items-center space-x-1">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm font-semibold">(247)</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-display text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-300">
+                        EchoWater Prime Machine
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        The ultimate water purification experience. Professional-grade 7-stage filtration with AI monitoring, 
+                        UV sterilization, and premium mineral enhancement technology.
+                    </p>
+                    
+                    <!-- Premium Features List -->
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center space-x-2 text-xs">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-600">AI Smart Monitoring</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span class="text-gray-600">UV-C Sterilization</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-gray-600">Mineral Enhancement</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-bold text-gray-900">48,000 EGP</span>
+                            <span class="text-lg text-gray-400 line-through">62,000 EGP</span>
+                        </div>
+                        <span class="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-lg text-sm font-semibold animate-pulse">
+                            23% OFF
+                        </span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden">
+                            <span class="relative z-10">
+                                <i class="fas fa-crown mr-2"></i>
+                                Add Prime to Cart
+                            </span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        </button>
+                        <button class="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors duration-200">
+                            <i class="fas fa-eye mr-2"></i>
+                            View Prime Details
+                        </button>
+                    </div>
+                    
+                    <!-- Prime Benefits -->
+                    <div class="mt-4 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
+                        <div class="flex items-center space-x-2 text-sm text-orange-700">
+                            <i class="fas fa-gift"></i>
+                            <span class="font-semibold">Prime Benefits:</span>
+                        </div>
+                        <ul class="text-xs text-orange-600 mt-1 ml-4">
+                            <li>• Free Premium Installation</li>
+                            <li>• 5-Year Extended Warranty</li>
+                            <li>• Priority Customer Support</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -381,7 +508,7 @@
                     <i class="fas fa-shipping-fast text-2xl text-cyan-400"></i>
                 </div>
                 <h3 class="font-semibold text-lg mb-2">Free Shipping</h3>
-                <p class="text-blue-100 text-sm">Free delivery on orders over $299</p>
+                <p class="text-blue-100 text-sm">Free delivery on orders over 10,000 EGP</p>
             </div>
             
             <div class="text-center group">
