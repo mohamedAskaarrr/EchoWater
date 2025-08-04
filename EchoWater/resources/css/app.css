@@ -1,11 +1,150 @@
-@import 'tailwindcss';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/* Custom CSS for EchoWater Application */
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Font Families */
+body {
+    font-family: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Particle animation for background effects */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: particle-float 20s infinite linear;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Gradient text animation */
+.gradient-text-animated {
+    background: linear-gradient(-45deg, #4facfe, #00f2fe, #667eea, #764ba2);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enhanced focus states */
+input:focus, textarea:focus, select:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effects */
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth image loading */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img[data-loaded="false"] {
+    opacity: 0;
+}
+
+img[data-loaded="true"] {
+    opacity: 1;
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+    .glass-effect {
+        backdrop-filter: blur(10px);
+    }
+    
+    .scale-hover:hover {
+        transform: scale(1.02);
+    }
+    
+    .slide-up {
+        animation-duration: 0.6s;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .auto-dark {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
