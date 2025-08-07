@@ -7,6 +7,7 @@
 
 ## 🚀 Project Overview
 
+
 **EchoWater** is a cutting-edge web application for a premium water purification company that combines advanced filtration technology with modern web development. This full-stack Laravel application showcases a sophisticated e-commerce platform with IoT integration, AI-powered monitoring, and eco-friendly solutions.
 
 ### 🎯 Key Features
