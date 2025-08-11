@@ -1,0 +1,219 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Base Variables */
+:root {
+  --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 12px;
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Theme-specific Custom Properties */
+[data-theme="aqua"] {
+  --bg-primary: theme('colors.white');
+  --bg-secondary: theme('colors.slate.50');
+  --text-primary: theme('colors.slate.900');
+  --text-secondary: theme('colors.slate.600');
+  --accent: theme('colors.aqua.500');
+  --accent-hover: theme('colors.aqua.600');
+}
+
+[data-theme="tech"] {
+  --bg-primary: theme('colors.gray.900');
+  --bg-secondary: theme('colors.gray.800');
+  --text-primary: theme('colors.white');
+  --text-secondary: theme('colors.gray.300');
+  --accent: theme('colors.tech.400');
+  --accent-hover: theme('colors.tech.500');
+}
+
+/* Base Styles */
+* {
+  transition: var(--transition-theme);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Theme-specific styles */
+[data-theme="aqua"] {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+[data-theme="tech"] {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95;
+    background: var(--accent);
+    color: white;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-large);
+  }
+
+  .card {
+    @apply rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02];
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-medium);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-large);
+  }
+
+  .glass-morphism {
+    @apply backdrop-blur-md bg-opacity-10 border border-opacity-20;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Aqua Theme Specific Animations */
+[data-theme="aqua"] .water-drop {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="aqua"] .water-drop::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+  animation: ripple-aqua 3s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ripple-aqua {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 0; }
+}
+
+/* Tech Theme Specific Animations */
+[data-theme="tech"] .matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="tech"] .matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+  animation: matrix-sweep 4s ease-in-out infinite;
+}
+
+@keyframes matrix-sweep {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Particle System */
+.particle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+[data-theme="aqua"] .particle {
+  background: linear-gradient(45deg, #06b6d4, #0891b2);
+  animation: float-aqua 6s ease-in-out infinite;
+}
+
+[data-theme="tech"] .particle {
+  background: linear-gradient(45deg, #00ff88, #00d4ff);
+  animation: float-tech 8s linear infinite;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes float-aqua {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-40px) translateX(-5px); }
+  75% { transform: translateY(-20px) translateX(-10px); }
+}
+
+@keyframes float-tech {
+  0% { transform: translateY(100vh) scale(0); }
+  10% { transform: scale(1); }
+  90% { transform: scale(1); }
+  100% { transform: translateY(-100px) scale(0); }
+}
+
+/* Loading States */
+.skeleton {
+  @apply animate-pulse bg-gray-300 dark:bg-gray-700 rounded;
+}
+
+/* Smooth Transitions */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: all 0.3s ease;
+}
+
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .btn-primary {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; color: black !important; }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
