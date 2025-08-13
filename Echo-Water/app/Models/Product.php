@@ -33,4 +33,12 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Scope to get only active products
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
 }
