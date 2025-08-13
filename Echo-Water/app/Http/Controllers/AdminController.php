@@ -35,38 +35,18 @@ class AdminController extends Controller
     {
         $redirect = $this->checkAdminRole();
         if ($redirect) return $redirect;
-        // Get real stats from database or use defaults
+
         $stats = [
-            'total_users' => User::count() ?: 1250,
-            'total_orders' => Order::count() ?: 340,
-            'monthly_revenue' => Order::where('created_at', '>=', now()->startOfMonth())->sum('total_amount') ?: 45600,
-            'active_devices' => 890 // This would come from IoT data
+            'total_users' => User::count(),
+            'total_orders' => Order::count(),
+            'monthly_revenue' => Order::whereMonth('created_at', now()->month)->sum('total_amount'),
+            'active_devices' => 890 // This would come from IoT data integration
         ];
 
-        // Get recent orders
         $recentOrders = Order::with(['user', 'product'])
                             ->latest()
                             ->limit(5)
-                            ->get()
-                            ->map(function ($order) {
-                                return [
-                                    'id' => $order->id,
-                                    'customer' => $order->customer_name ?: ($order->user->name ?? 'Guest'),
-                                    'product' => $order->product->name ?? 'Unknown Product',
-                                    'amount' => $order->total_amount,
-                                    'status' => $order->status
-                                ];
-                            })
-                            ->toArray();
-
-        // If no orders in database, use sample data
-        if (empty($recentOrders)) {
-            $recentOrders = [
-                ['id' => 1, 'customer' => 'John Doe', 'product' => 'EchoMax Pro', 'amount' => 599.99, 'status' => 'completed'],
-                ['id' => 2, 'customer' => 'Jane Smith', 'product' => 'AquaFlow Elite', 'amount' => 299.99, 'status' => 'pending'],
-                ['id' => 3, 'customer' => 'Mike Johnson', 'product' => 'PureHouse Complete', 'amount' => 1299.99, 'status' => 'processing']
-            ];
-        }
+                            ->get();
 
         return view('admin.dashboard', compact('stats', 'recentOrders'));
     }
@@ -79,23 +59,7 @@ class AdminController extends Controller
         $redirect = $this->checkAdminRole();
         if ($redirect) return $redirect;
 
-        $users = User::latest()->get()->map(function ($user) {
-            return [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at->format('Y-m-d')
-            ];
-        })->toArray();
-
-        // If no users in database, use sample data
-        if (empty($users)) {
-            $users = [
-                ['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com', 'created_at' => '2024-01-15'],
-                ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com', 'created_at' => '2024-01-20'],
-                ['id' => 3, 'name' => 'Mike Johnson', 'email' => 'mike@example.com', 'created_at' => '2024-02-01']
-            ];
-        }
+        $users = User::latest()->get();
 
         return view('admin.users', compact('users'));
     }
@@ -107,27 +71,7 @@ class AdminController extends Controller
     {
         $orders = Order::with(['user', 'product'])
                       ->latest()
-                      ->get()
-                      ->map(function ($order) {
-                          return [
-                              'id' => $order->id,
-                              'customer' => $order->customer_name ?: ($order->user->name ?? 'Guest'),
-                              'product' => $order->product->name ?? 'Unknown Product',
-                              'amount' => $order->total_amount,
-                              'status' => $order->status,
-                              'date' => $order->created_at->format('Y-m-d')
-                          ];
-                      })
-                      ->toArray();
-
-        // If no orders in database, use sample data
-        if (empty($orders)) {
-            $orders = [
-                ['id' => 1, 'customer' => 'John Doe', 'product' => 'EchoMax Pro', 'amount' => 599.99, 'status' => 'completed', 'date' => '2024-01-15'],
-                ['id' => 2, 'customer' => 'Jane Smith', 'product' => 'AquaFlow Elite', 'amount' => 299.99, 'status' => 'pending', 'date' => '2024-01-20'],
-                ['id' => 3, 'customer' => 'Mike Johnson', 'product' => 'PureHouse Complete', 'amount' => 1299.99, 'status' => 'processing', 'date' => '2024-02-01']
-            ];
-        }
+                      ->get();
 
         return view('admin.orders', compact('orders'));
     }
@@ -137,28 +81,7 @@ class AdminController extends Controller
      */
     public function products()
     {
-        $products = Product::where('status', 'active')
-                          ->latest()
-                          ->get()
-                          ->map(function ($product) {
-                              return [
-                                  'id' => $product->id,
-                                  'name' => $product->name,
-                                  'category' => $product->category,
-                                  'price' => $product->price,
-                                  'stock' => $product->stock
-                              ];
-                          })
-                          ->toArray();
-
-        // If no products in database, use sample data
-        if (empty($products)) {
-            $products = [
-                ['id' => 1, 'name' => 'EchoMax Pro', 'category' => 'Under-sink Systems', 'price' => 599.99, 'stock' => 25],
-                ['id' => 2, 'name' => 'AquaFlow Elite', 'category' => 'Countertop Purifiers', 'price' => 299.99, 'stock' => 40],
-                ['id' => 3, 'name' => 'PureHouse Complete', 'category' => 'Whole-house Solutions', 'price' => 1299.99, 'stock' => 15]
-            ];
-        }
+        $products = Product::active()->latest()->get();
 
         return view('admin.products', compact('products'));
     }
