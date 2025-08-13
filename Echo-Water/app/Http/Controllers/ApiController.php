@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
     /**
-     * Get dashboard metrics
+     * Get dashboard metrics (placeholder for IoT integration)
      */
     public function getDashboardMetrics()
     {
-        // Sample real-time data - replace with actual sensor data
         $metrics = [
             'tds_level' => rand(40, 50),
             'ph_level' => round(rand(70, 74) / 10, 1),
@@ -28,71 +28,37 @@ class ApiController extends Controller
      */
     public function getProducts(Request $request)
     {
-        // Sample product filtering - replace with database queries
-        $products = [
-            [
-                'id' => 1,
-                'name' => 'EchoMax Pro',
-                'category' => 'Under-sink Systems',
-                'price' => 599.99,
-                'rating' => 4.8,
-                'image' => '/images/echomax-pro.jpg'
-            ],
-            [
-                'id' => 2,
-                'name' => 'AquaFlow Elite',
-                'category' => 'Countertop Purifiers',
-                'price' => 299.99,
-                'rating' => 4.6,
-                'image' => '/images/aquaflow-elite.jpg'
-            ],
-            [
-                'id' => 3,
-                'name' => 'PureHouse Complete',
-                'category' => 'Whole-house Solutions',
-                'price' => 1299.99,
-                'rating' => 4.9,
-                'image' => '/images/purehouse-complete.jpg'
-            ]
-        ];
+        $query = Product::active();
 
         // Apply filters
         if ($request->filled('category')) {
-            $products = array_filter($products, function($product) use ($request) {
-                return $product['category'] === $request->category;
-            });
+            $query->where('category', $request->category);
         }
 
         if ($request->filled('search')) {
-            $search = strtolower($request->search);
-            $products = array_filter($products, function($product) use ($search) {
-                return str_contains(strtolower($product['name']), $search);
-            });
+            $query->where('name', 'like', '%' . $request->search . '%');
         }
 
         if ($request->filled('rating')) {
-            $minRating = (float) $request->rating;
-            $products = array_filter($products, function($product) use ($minRating) {
-                return $product['rating'] >= $minRating;
-            });
+            $query->where('rating', '>=', $request->rating);
         }
 
-        return response()->json(array_values($products));
+        $products = $query->get();
+
+        return response()->json($products);
     }
 
     /**
-     * Update device settings
+     * Update device settings (placeholder for IoT integration)
      */
     public function updateDeviceSettings(Request $request)
     {
-        // Validate input
         $validated = $request->validate([
             'device_id' => 'required|string',
             'settings' => 'required|array'
         ]);
 
-        // Here you would typically update the device settings in your database
-        // For now, we'll just return a success response
+        // TODO: Update device settings in database or send to IoT platform
 
         return response()->json([
             'success' => true,
@@ -103,13 +69,13 @@ class ApiController extends Controller
     }
 
     /**
-     * Get water quality history
+     * Get water quality history (placeholder for IoT integration)
      */
     public function getWaterQualityHistory(Request $request)
     {
         $days = $request->get('days', 7);
         
-        // Sample historical data - replace with database queries
+        // TODO: Replace with actual database queries
         $history = [];
         for ($i = $days; $i >= 0; $i--) {
             $history[] = [
