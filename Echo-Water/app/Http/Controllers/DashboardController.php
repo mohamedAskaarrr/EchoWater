@@ -13,13 +13,24 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Simple auth check without middleware
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Please login to access dashboard');
         }
 
-        // Sample water quality data - replace with database queries
-        $metrics = [
+        // TODO: Replace with real IoT data or database queries
+        $metrics = $this->getWaterMetrics();
+        $waterQuality = $this->getWaterQuality();
+        $deviceStatus = $this->getDeviceStatus();
+
+        return view('dashboard_modern', compact('metrics', 'waterQuality', 'deviceStatus'));
+    }
+
+    /**
+     * Get water usage metrics (placeholder for IoT integration)
+     */
+    private function getWaterMetrics()
+    {
+        return [
             'tds_level' => 45,
             'ph_level' => 7.2,
             'filter_health' => 85,
@@ -27,20 +38,30 @@ class DashboardController extends Controller
             'daily_usage' => 48,
             'weekly_usage' => 290
         ];
+    }
 
-        $waterQuality = [
+    /**
+     * Get water quality data (placeholder for IoT integration)
+     */
+    private function getWaterQuality()
+    {
+        return [
             'tds' => ['value' => 45, 'status' => 'excellent', 'unit' => 'ppm'],
             'ph' => ['value' => 7.2, 'status' => 'optimal', 'unit' => ''],
             'chlorine' => ['value' => 0.02, 'status' => 'good', 'unit' => 'ppm']
         ];
+    }
 
-        $deviceStatus = [
+    /**
+     * Get device status (placeholder for IoT integration)
+     */
+    private function getDeviceStatus()
+    {
+        return [
             'primary_filter' => ['health' => 85, 'days_remaining' => 45, 'status' => 'good'],
             'carbon_filter' => ['health' => 92, 'days_remaining' => 67, 'status' => 'excellent'],
             'uv_light' => ['health' => 25, 'days_remaining' => 23, 'status' => 'replace_soon']
         ];
-
-        return view('dashboard_modern', compact('metrics', 'waterQuality', 'deviceStatus'));
     }
 
     /**
@@ -53,29 +74,10 @@ class DashboardController extends Controller
         }
 
         try {
-            // Get current data
-            $metrics = [
-                'tds_level' => 45,
-                'ph_level' => 7.2,
-                'filter_health' => 85,
-                'monthly_usage' => 1250,
-                'daily_usage' => 48,
-                'weekly_usage' => 290
-            ];
+            $metrics = $this->getWaterMetrics();
+            $waterQuality = $this->getWaterQuality();
+            $deviceStatus = $this->getDeviceStatus();
 
-            $waterQuality = [
-                'tds' => ['value' => 45, 'status' => 'excellent', 'unit' => 'ppm'],
-                'ph' => ['value' => 7.2, 'status' => 'optimal', 'unit' => ''],
-                'chlorine' => ['value' => 0.02, 'status' => 'good', 'unit' => 'ppm']
-            ];
-
-            $deviceStatus = [
-                'primary_filter' => ['health' => 85, 'days_remaining' => 45, 'status' => 'good'],
-                'carbon_filter' => ['health' => 92, 'days_remaining' => 67, 'status' => 'excellent'],
-                'uv_light' => ['health' => 25, 'days_remaining' => 23, 'status' => 'replace_soon']
-            ];
-
-            // Generate PDF content (simplified version without external libraries)
             $pdfContent = $this->generatePdfContent($metrics, $waterQuality, $deviceStatus);
             
             return response($pdfContent)
@@ -99,7 +101,6 @@ class DashboardController extends Controller
         }
 
         try {
-            // Simulate system check
             sleep(2); // Simulate checking time
             
             $results = [
@@ -114,7 +115,7 @@ class DashboardController extends Controller
                 'success' => true,
                 'message' => 'System check completed successfully. All systems are operating normally.',
                 'checks' => $results,
-                'timestamp' => date('Y-m-d H:i:s')
+                'timestamp' => now()
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -133,9 +134,13 @@ class DashboardController extends Controller
             return response()->json(['success' => false, 'message' => 'Unauthorized'], 401);
         }
 
+        $request->validate([
+            'date' => 'required|date|after:today'
+        ]);
+
         try {
-            // In a real app, you would save this to database
-            $maintenanceDate = $request->input('date', date('Y-m-d', strtotime('+7 days')));
+            // TODO: Save to database instead of just returning response
+            $maintenanceDate = $request->input('date');
             
             return response()->json([
                 'success' => true,
