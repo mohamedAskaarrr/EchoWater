@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -57,31 +57,23 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Create user
-        $userId = DB::table('users')->insertGetId([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
             'email_verified_at' => now(),
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
-        // Assign 'user' role by default
-        DB::table('model_has_roles')->insert([
-            'role_id' => 2, // Assuming 'user' role has ID 2
-            'model_type' => 'App\\Models\\User',
-            'model_id' => $userId,
-        ]);
+        // Assign default 'user' role
+        $user->assignRole('user');
 
-        // Login the user
-        Auth::loginUsingId($userId);
+        Auth::login($user);
 
         return redirect('/dashboard');
     }
